@@ -19,17 +19,18 @@
 # import shelve
 file=open("cuaca.csv","r")
 data_cuaca=file.readlines()
-bulan=[]
 
-def bulan_negatif(data):
-  for i in data:
-    data_per_bulan=i.split(";")
-    for j in data_per_bulan:
+def bulan_negatif(months_data):
+  months=[]
+  for i in months_data:
+    month_data=i.split(";")
+    for j in month_data:
       # print(int(j))
       if "1" in j or "2" in j or "3" in j or "4" in j or "5" in j or "6" in j or "7" in j or "8" in j or "9" in j :
         if int(j)<0:
-          bulan.append(data_per_bulan[1])
-  return(bulan)
+          months.append(month_data[1])
+  months = list(dict.fromkeys(months))
+  return(months)
 
 # memanggil fungsi
 print(bulan_negatif(data_cuaca))
